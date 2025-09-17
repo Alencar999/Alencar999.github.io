@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTech - Soluções em Energia Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis e reset */
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.9), rgba(52, 152, 219, 0.9)), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Seções */
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+        
+        section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        /* Sobre */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Tecnologia */
+        .technology {
+            background-color: #f5f9ff;
+        }
+        
+        .tech-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .tech-step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .tech-step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tech-step i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Vantagens */
+        .benefits {
+            background-color: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: #f5f9ff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card h4 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: var(--dark);
+        }
+        
+        /* Casos de Sucesso */
+        .success {
+            background-color: #f5f9ff;
+        }
+        
+        .cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .case-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .case-card:hover .case-image img {
+            transform: scale(1.1);
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        /* Contato */
+        .contact {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>GreenTech</h1>
+            </div>
+            
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#technology">Tecnologia</a></li>
+                <li><a href="#benefits">Vantagens</a></li>
+                <li><a href="#success">Casos de Sucesso</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Revolucionando o Monitoramento de Energia com IA</h2>
+            <p>Reduza até 30% do consumo energético com nossa tecnologia preditiva de ponta para empresas e residências.</p>
+            <a href="#contact" class="btn">Solicite uma Demonstração</a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>GreenTech - Inovação em Eficiência Energética</h3>
+                    <p>Fundada em 2018, a GreenTech surgiu com a missão de transformar a forma como consumimos energia. Nossa equipe de engenheiros e cientistas de dados desenvolveu uma plataforma inteligente que utiliza algoritmos de IA para otimizar o consumo energético em tempo real.</p>
+                    <p>Atuamos em diversos setores, desde grandes indústrias até residências, sempre com foco em sustentabilidade e economia. Nossa tecnologia já ajudou a economizar mais de 15.000 MWh, equivalentes à plantação de 100.000 árvores.</p>
+                    <a href="#technology" class="btn">Conheça nossa Tecnologia</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Sistema de monitoramento GreenTech">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologia -->
+    <section class="technology" id="technology">
+        <div class="container">
+            <h2>Nossa Tecnologia</h2>
+            <p>Utilizamos inteligência artificial e machine learning para revolucionar a gestão energética. Nosso sistema aprende com seus padrões de consumo e faz ajustes automáticos para maximizar a eficiência.</p>
+            
+            <div class="tech-steps">
+                <div class="tech-step">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Monitoramento Inteligente</h3>
+                    <p>Sensores IoT coletam dados de consumo em tempo real, identificando padrões e desperdícios.</p>
+                </div>
+                
+                <div class="tech-step">
+                    <i class="fas fa-brain"></i>
+                    <h3>Análise Preditiva</h3>
+                    <p>Algoritmos de IA analisam os dados e preveem consumo futuro, sugerindo otimizações.</p>
+                </div>
+                
+                <div class="tech-step">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Controle Automatizado</h3>
+                    <p>O sistema faz ajustes automáticos na operação de equipamentos para reduzir consumo.</p>
+                </div>
+                
+                <div class="tech-step">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Relatórios Detalhados</h3>
+                    <p>Relatórios personalizados mostram economia alcançada e sugerem novas melhorias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vantagens -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2>Vantagens e Benefícios</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-money-bill-wave fa-2x" style="color: var(--primary);"></i>
+                    <h4>Redução de Custos</h4>
+                    <p>Economize até 30% na conta de energia com nossa tecnologia inteligente.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-leaf fa-2x" style="color: var(--primary);"></i>
+                    <h4>Sustentabilidade</h4>
+                    <p>Reduza sua pegada de carbono e contribua para um planeta mais verde.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-bolt fa-2x" style="color: var(--primary);"></i>
+                    <h4>Otimização em Tempo Real</h4>
+                    <p>Nosso sistema ajusta automaticamente o consumo sem prejudicar operações.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-chart-pie fa-2x" style="color: var(--primary);"></i>
+                    <h4>Relatórios Detalhados</h4>
+                    <p>Acesse dados e insights valiosos sobre seus padrões de consumo.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-mobile-alt fa-2x" style="color: var(--primary);"></i>
+                    <h4>Controle Remoto</h4>
+                    <p>Monitore e ajuste seu consumo de qualquer lugar através do nosso app.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt fa-2x" style="color: var(--primary);"></i>
+                    <h4>Segurança de Dados</h4>
+                    <p>Seus dados são criptografados e protegidos com os mais altos padrões.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Sucesso -->
+    <section class="success" id="success">
+        <div class="container">
+            <h2>Casos de Sucesso</h2>
+            <div class="cases">
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Indústria Têxtil">
+                    </div>
+                    <div class="case-content">
+                        <h4>Indústria Têxtil</h4>
+                        <p>Economia de 28% em 6 meses, com retorno do investimento em apenas 8 meses.</p>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Shopping Center">
+                    </div>
+                    <div class="case-content">
+                        <h4>Shopping Center</h4>
+                        <p>Redução de 35% nos picos de demanda e economia anual de R$ 180.000,00.</p>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Hospital">
+                    </div>
+                    <div class="case-content">
+                        <h4>Hospital</h4>
+                        <p>Otimização do sistema de climatização com economia de 25% sem comprometer o conforto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Fale Conosco</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000, São Paulo - SP</p>
+                    <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> contato@greentech.com.br</p>
+                    <p><i class="fas fa-clock"></i> Segunda a Sexta, 9h às 18h</p>
+                    
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Solicite uma Demonstração</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GreenTech</h3>
+                    <p>Soluções inteligentes para eficiência energética com IA.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <p><a href="#home" style="color: white;">Início</a></p>
+                    <p><a href="#about" style="color: white;">Sobre</a></p>
+                    <p><a href="#technology" style="color: white;">Tecnologia</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produtos</h3>
+                    <p>GreenIndustry</p>
+                    <p>GreenHome</p>
+                    <p>GreenCommerce</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 GreenTech - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // Animação de contador para estatísticas (exemplo)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            // Iniciar quando elemento estiver visível na tela
+            // (implementação simplificada)
+            setTimeout(updateCount, 1000);
+        });
+    </script>
+</body>
+</html>
